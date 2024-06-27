@@ -6,11 +6,11 @@ const TimeDisplay = ({ date }: { date: Date }) => {
 
 	return (
 		<div>
-			<p className="greeting">{time.greeting}</p>
-			<p className="time">
+			<p className="secondary-text shadow">{time.greeting}</p>
+			<p className="primary-text shadow-lg">
 				{time.hours}:{time.minutes}:{time.seconds}
 			</p>
-			<p className="date">
+			<p className="secondary-text shadow">
 				{pdate.day} {pdate.date}
 				<sup>{pdate.suffix}</sup> {pdate.month} {pdate.year}
 			</p>
