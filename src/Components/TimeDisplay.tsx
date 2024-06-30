@@ -1,4 +1,4 @@
-import { getDate, getTime } from "@/Utils/TimeCalc"
+import { getDate, getTime } from "../Utils/TimeCalc"
 
 const TimeDisplay = ({ date }: { date: Date }) => {
 	const time = getTime(date)
