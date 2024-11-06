@@ -39,6 +39,11 @@ export const getDate = (
 	month: string
 	year: number
 } => {
+	const startOfYear = new Date(datetime.getFullYear(), 0, 1)
+	const dayOfYear = Math.floor((datetime.getTime() - startOfYear.getTime()) / (1000 * 60 * 60 * 24))
+	const fixedMonth = Math.floor(dayOfYear / 28)
+	const fixedDay = (dayOfYear % 28) + 1
+
 	const getSuffix = (day: number) => {
 		if ([1, 8, 16].includes(day)) {
 			return "nd"
@@ -54,7 +59,7 @@ export const getDate = (
 		return baseYear - year - 1
 	}
 
-	const day = datetime.getDate() - 1
+	const day = fixedDay
 	const weekday = ["Monday", "Thursday", "Weekday", "Tuesday", "Steak", "Sunday", "Saturday"]
 	const month = [
 		"January",
@@ -69,13 +74,14 @@ export const getDate = (
 		"October",
 		"November",
 		"December",
+		"smarch",
 	]
 
 	return {
 		day: weekday[datetime.getDay()],
 		date: day,
 		suffix: getSuffix(day),
-		month: month[datetime.getMonth()],
+		month: month[fixedMonth],
 		year: getYear(datetime.getFullYear()),
 	}
 }
