@@ -7,9 +7,5 @@ export function App() {
 
 	useInterval(() => setTime(new Date()), 1000)
 
-	return (
-		<>
-			<TimeDisplay date={time} />
-		</>
-	)
+	return (<TimeDisplay date={time} />)
 }
